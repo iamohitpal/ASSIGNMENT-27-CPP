@@ -1,0 +1,60 @@
+#include<iostream>
+using namespace std;
+class complex
+{
+private:
+    int a,b;
+public:
+    void setdata(int x,int y)
+    {
+        a=x;
+        b=y;
+    }
+    complex operator+(complex c)
+    {
+        complex temp;
+        temp.a=a+c.a;
+        temp.b=b+c.b;
+        return temp;
+    }
+    complex operator-(complex c)
+    {
+        complex temp;
+        temp.a=a-c.a;
+        temp.b=b-c.b;
+        return temp;
+    }
+    complex operator*(complex c)
+    {
+        complex temp;
+        temp.a=a*c.a;
+        temp.b=b*c.b;
+        return temp;
+    }
+    complex operator==(complex c)
+    {
+        complex temp;
+        temp.a=c.a;
+        temp.b=c.b;
+        return temp;
+    }
+    void showoperations()
+    {
+        cout<<"real = "<<a<<"  imag = "<<b<<endl;
+    }
+};
+int main()
+{
+    complex c1,c2,c3,c4,c5,c6,c7;
+    c1.setdata(2,3);
+    c2.setdata(3,4);
+    c6.setdata(5,6);
+    c3=c1+c2;
+    c4=c3-c2;
+    c5=c1*c4;
+    c7=c6;
+    c3.showoperations();
+    c4.showoperations();
+    c5.showoperations();
+    c6.showoperations();
+}
