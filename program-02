@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+class num
+{
+private:
+    int n;
+public:
+    void getnum(int x)
+    {
+        n=x;
+    }
+    void dispnum()
+    {
+        cout<<"value of n is: "<< n;
+    }
+    void operator++()
+    {
+        n = ++n;
+    }
+    void operator--()
+    {
+        n = --n;
+    }
+};
+int main()
+{
+    num n;
+    n.getnum(10);
+    n.operator++();
+    cout << "After increment - ";
+    n.dispnum();
+    cout << endl;
+    n.operator--();
+    cout << "After decrement - ";
+    n.dispnum();
+    cout << endl;
+return 0;
+}
