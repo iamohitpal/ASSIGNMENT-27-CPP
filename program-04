@@ -1,0 +1,80 @@
+#include<iostream>
+using namespace std;
+class time
+{
+private:
+    int h,m,s;
+public:
+    time()
+    {
+        h=0;
+        m=0;
+        s=0;
+    }
+    friend int operator>>(istream& , time&  );
+    friend void operator<<(ostream& ,time& );
+    friend void operator==(time ,time );
+    ~time(){}
+};
+int operator>>(istream &cin ,time &t)
+    {
+        cout<<"-----------------"<<endl;
+        cout<<"Enter hours    :   ";
+        cin>>t.h;
+        cout<<endl;
+        cout<<"Enter minutes  :   ";
+        cin>>t.m;
+        cout<<endl;
+        cout<<"Enter seconds  :   ";
+        cin>>t.s;
+        cout<<endl;
+        t.m=t.m+t.s/60;
+        t.h=t.h+t.m/60;
+        t.m=t.m%60;
+        t.s=t.s%60;
+        if(t.h>25)
+            return 1;
+        else
+            return 0;
+    }
+void operator<<(ostream &cout,time &t)
+    {
+
+        cout<<"hours     :  "<<t.h<<endl;
+        cout<<"minutes   :  "<<t.m<<endl;
+        cout<<"seconds   :  "<<t.s<<endl;
+        cout<<endl;
+    }
+void operator==(time t1,time t2)
+{
+    int T1,T2;
+        T1=(t1.h*3600+t1.m*60+t1.s);
+        T2=(t2.h*3600+t2.m*60+t2.s);
+        if(T1==T2)
+            cout<<"Times are same !"<<endl;
+        else
+            cout<<"Times are not same !"<<endl;
+}
+int main()
+{
+    time t1,t2;
+    cout<<"Enter First Time "<<endl;
+    if(cin>>t1)
+    {
+        cout<<"Invalid Time !"<<endl;
+        return 0; //operator>>(cin,t1);
+    }
+    cout<<"First Time"<<endl;
+    cout<<t1;//operator<<(cout,t1);
+    cout<<"Enter Second Time "<<endl;
+    if(cin>>t2)
+    {
+        cout<<"Invalid Time ! "<<endl;
+        return 0; //operator>>(cin,t2);
+    }
+    cout<<"Second Time "<<endl;
+    cout<<t2;//operator<<(cout,t2);
+    t1==t2;//operator==(t1,t2);
+return 0;
+}
+
