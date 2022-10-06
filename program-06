@@ -1,0 +1,67 @@
+#include<iostream>
+#include<string.h>
+using namespace std;
+class CString
+{
+    public:
+        char str[20];
+    public:
+        void get_string()
+        {
+                cout<<"Enter String        :   ";
+                cin>>str;
+        }
+        void display()
+        {
+                cout<<str;
+        }
+        CString operator+(CString x)
+        {
+                CString s;
+                strcat(str, x.str);
+                strcpy(s.str, str);
+                return s;
+        }
+        int operator==(CString &t)
+        {
+               for(int i=0; str[i]; i++)
+                {
+                  for(int j=0; t.str[j]; j++)
+                    {
+                        if(str[i]==t.str[j])
+                        {
+                                return 0;
+                        }
+                        else
+                        {
+                                return 1;
+                        }
+                     }
+                 }
+        }
+};
+int main()
+{
+        CString str1, str2, str3;
+        int result=0;
+        str1.get_string();
+        str2.get_string();
+        cout<<"\n---------------------------------------";
+        cout<<"\n\nFirst String is           :  ";
+        str1.display();
+        cout<<"\n\nSecond String is          :  ";
+        str2.display();
+        cout<<"\n---------------------------------------";
+        str3=str1+str2;
+        cout<<"\n\nConcatenated String is    :  ";
+        str3.display();
+        if(str1==str2)
+        {
+                cout<<"\n\nBoth Strings are Equal\n\n";
+        }
+        else
+        {
+                cout<<"\n\nBoth Strings are Not Equal\n\n";
+        }
+return 0;
+}
